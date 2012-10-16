@@ -46,7 +46,7 @@ gem 'recaptcha', :require => 'recaptcha/rails', :branch => 'rails3'
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'factory_girl', '~> 2.2'
+  gem 'factory_girl', '~> 2.2', :require => false
   gem 'webrat'
   gem 'rspec-rails', '~> 2.0'
   gem 'simplecov', :require => false
@@ -56,4 +56,9 @@ group :development, :test do
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'guard-rspec'
+  gem 'rb-inotify', '0.8.8'
+  gem 'libnotify', '0.5.9'
+  gem 'guard-spork', '1.2.0'
+  gem 'spork', '0.9.2'
 end
