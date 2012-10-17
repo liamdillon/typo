@@ -470,12 +470,14 @@ class Article < Content
 
   def merge_with(id)
     #concatenate article bodies
+    puts self.body
+    puts Article.find_by_id(id).body
     self.body = self.body + Article.find_by_id(id).body
 
     #point comments at this article
-    Article.find_by_id(id).comments.each do |c|
-      c.article = self
-    end
+    puts self.comments
+    puts Article.find_by_id(id).comments
+    self.comments += Article.find_by_id(id).comments
   end
 
 end
