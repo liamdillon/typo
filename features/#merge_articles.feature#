@@ -6,9 +6,9 @@ Feature: Merge Articles
 Background: the articles exist
   Given the blog is set up
   Given the following articles exist:
-  | title    	      | author		| body                          | comments   |
-  | Bees	      | Nicolas Cage	| More dangerous than we think? | [apple]    |
-  | Stratosphere Jump | John Drake	| That was pretty cool.         | [banana]   |
+  | title    	      | author		| body                          |
+  | Bees	      | Nicolas Cage	| More dangerous than we think? |
+  | Stratosphere Jump | John Drake	| That was pretty cool.         |
   
   And I am logged into the admin panel    
 

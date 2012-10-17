@@ -2,9 +2,11 @@
 
 <%= render "admin/shared/edit", { :form_type => "article", :form_action => { :action => "new", :id => @article.id , :class => ('autosave')} } %>
 
-<%= form_tag(:action => 'merge') do %>
-<div><%= label_tag("Article ID ") %>
-  <%= hidden_field_tag 'curr_id', @article.id %>
-  <%= text_field_tag('merge_with') %></div>
-  <%= submit_tag("Merge") %>
+<% if current_user.admin? %>
+       <%= form_tag(:action => 'merge') do %>
+       <div><%= label_tag("Article ID ") %>
+       <%= hidden_field_tag 'curr_id', @article.id %>
+       <%= text_field_tag('merge_with') %></div>
+       <%= submit_tag("Merge") %>
+       <% end %>
 <% end %>
