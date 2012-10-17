@@ -6,11 +6,7 @@ Given /the following articles exist/ do |articles_table|
   end
 end
 
-Given /I am logged in as admin/ do
-  visit '/admin'
-end
 
-Then /I should be admin page/ do
-     curr_path = URI.parse(current_url).path
-     assert_equal curr_path, '/admin'
+
+Then /I should be on the page of the new article/ do
 end

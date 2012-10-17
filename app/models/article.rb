@@ -467,4 +467,15 @@ class Article < Content
     to = to - 1 # pull off 1 second so we don't overlap onto the next day
     return from..to
   end
+
+  def merge_with(id)
+    #concatenate article bodies
+    self.body = self.body + Article.find_by_id(id).body
+
+    #point comments at this article
+    Article.find_by_id(id).comments.each do |c|
+      c.article = self
+    end
+  end
+
 end
