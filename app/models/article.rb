@@ -23,6 +23,18 @@ class Article < Content
   has_many :categories, :through => :categorizations
   has_many :triggers, :as => :pending_item
 
+  def merge_with(id)
+    #concatenate article bodies
+    self.body = self.body + Article.find_by_id(id).body
+
+    #point comments at this article
+    self.comments += Article.find_by_id(id).comments
+    self.save
+
+    Article.find_by_id(id).destroy
+  end
+
+
   has_many :comments,   :dependent => :destroy, :order => "created_at ASC" do
 
     # Get only ham or presumed_ham comments
@@ -467,16 +479,4 @@ class Article < Content
     to = to - 1 # pull off 1 second so we don't overlap onto the next day
     return from..to
   end
-
-  def merge_with(id)
-    #concatenate article bodies
-    self.body = self.body + Article.find_by_id(id).body
-
-    #point comments at this article
-    self.comments += Article.find_by_id(id).comments
-    self.save
-
-    Article.find_by_id(id).destroy
-  end
-
 end
