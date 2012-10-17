@@ -14,7 +14,7 @@ class Admin::ContentController < Admin::BaseController
     else
       flash[:notice] = "No article with id #{merge_with_id}!"
     end
-    redirect_to 'admin/content'
+    redirect_to '/admin/content'
   end
 
   def auto_complete_for_article_keywords
